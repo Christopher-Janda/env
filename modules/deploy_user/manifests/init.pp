@@ -51,7 +51,6 @@ class deploy_user {
         content => template('config/deploy/deploy.sh.erb'),
     }->
     exec { "tr -d '\015' < ${env::scripts_dir}/deploy.sh > /tmp/temp.sh && mv /tmp/temp.sh ${env::scripts_dir}/deploy.sh":
-        notify  => File["${env::scripts_dir}/deploy.sh"],
     }->
     exec { "chmod 700 ${env::scripts_dir}/deploy.sh; chgrp ${env::deploy_group} ${env::scripts_dir}/deploy.sh": }
 
