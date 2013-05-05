@@ -52,6 +52,7 @@ class nginx_server {
         groupowner      => $env::deploy_group,
         template        => 'config/nginx/vhost.conf.erb',
         serveraliases   => $env::nginx_serveraliases,
+        notify          => Service['nginx'],
     }
 
     ufw::allow {"allow-http-80-from-all":

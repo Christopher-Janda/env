@@ -32,7 +32,7 @@ then
     rm /tmp/sudoers.tmp
 fi
 cp /etc/sudoers /tmp/sudoers.tmp
-echo "deploy ALL=(ALL) NOPASSWD:$1/scripts/deploy.sh" >> /tmp/sudoers.tmp
+echo "deploy ALL=(ALL) NOPASSWD:$1/env/scripts/deploy.sh" >> /tmp/sudoers.tmp
 visudo -c -f /tmp/sudoers.tmp
 if [ "$?" -eq "0" ]
 then

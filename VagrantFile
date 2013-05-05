@@ -6,7 +6,10 @@ Vagrant::Config.run do |config|
     env_config_file = Dir.pwd + '/config/' + ENVIRONMENT + '/common.json'
     project_file = Dir.pwd + "/config/project.json"
     json_config = JSON.parse( IO.read(config_file) )
-    project_config = JSON.parse( IO.read(project_file) )
+    if not File.file?(project_file)
+        FileUtils.cp File.expand_path("..") + "/project.json", project_file
+    end
+	project_config = JSON.parse( IO.read(project_file) )
     if File.file?(env_config_file)
         env_json_config = JSON.parse( IO.read(env_config_file) )
         json_config = json_config.merge(env_json_config)

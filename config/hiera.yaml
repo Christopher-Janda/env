@@ -12,8 +12,8 @@
   - %{::certname}
   - %{::location}
   - %{::role}
-  - common
   - project
+  - common
 
 :json:
   :datadir: "env/config"
