@@ -1,0 +1,18 @@
+[submodule "modules/ufw"]
+	path = modules/ufw
+	url = git@github.com:puppetmodules/puppet-module-ufw.git
+[submodule "modules/nginx"]
+	path = modules/nginx
+	url = git@github.com:example42/puppet-nginx.git
+[submodule "modules/puppi"]
+	path = modules/puppi
+	url = git@github.com:example42/puppi.git
+[submodule "modules/mysql"]
+	path = modules/mysql
+	url = git@github.com:example42/puppet-mysql.git
+[submodule "modules/php"]
+	path = modules/php
+	url = git@github.com:saz/puppet-php.git
+[submodule "modules/apache"]
+	path = modules/apache
+	url = git@github.com:example42/puppet-apache.git

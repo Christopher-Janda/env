@@ -1,0 +1,38 @@
+Vagrant::Config.run do |config|
+
+    ENVIRONMENT = 'dev'
+
+    config_file = Dir.pwd + "/config/common.json"
+    env_config_file = Dir.pwd + '/config/' + ENVIRONMENT + '/common.json'
+    project_file = Dir.pwd + "/config/project.json"
+    json_config = JSON.parse( IO.read(config_file) )
+    project_config = JSON.parse( IO.read(project_file) )
+    if File.file?(env_config_file)
+        env_json_config = JSON.parse( IO.read(env_config_file) )
+        json_config = json_config.merge(env_json_config)
+    end
+
+	project_name = project_config['project_name']
+    deploy_user = json_config['deploy_user']
+    deploy_path = "/home/#{deploy_user}/#{project_name}/#{ENVIRONMENT}"
+
+    ######### CONFIGURATION ##########
+
+    config.vm.box = "precise-server-cloudimg-vagrant-amd64-disk1"
+    config.vm.box_url = "http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-vagrant-amd64-disk1.box"
+
+    config.vm.share_folder "vagrant-root", "#{deploy_path}", File.expand_path("..")
+
+    config.vm.define :web do |web_config|
+        web_config.vm.host_name = "www.#{project_name}"
+        web_config.vm.network :hostonly, "192.168.33.1"
+        web_config.vm.forward_port 80, 8080
+        web_config.vm.forward_port 8080, 8888
+    end
+
+    config.vm.provision :shell do |shell|
+        shell.path = "scripts/init.sh"
+        shell.args = "#{deploy_path} #{ENVIRONMENT}"
+    end
+
+end

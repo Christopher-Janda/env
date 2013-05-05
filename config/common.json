@@ -1,0 +1,35 @@
+{
+    // deploy_path = /home/{deploy_user}/{project_name}/{environment}
+
+    "deploy_user": "deploy",
+    "deploy_group": "www-data",
+
+    // hash can be generated with: openssl passwd -1
+    "deploy_pass": "pass123",
+    "deploy_hash": "$1$/aENfaOp$Mbot3VfBSQwWFi4p2/SE90",
+
+    "deploy_keys":
+        [
+            // rich mac laptop
+            "AAAAB3NzaC1yc2EAAAADAQABAAABAQDBR/B3wQZaRNXLLX9cWXCvJIjNNlMOW0T7ekcj0fJBrAJTztFLJXglc3tfXKgyptBPS+N5FX+ZBTirvhGzRKBPwL6331KNIpfQ45InRGUHgpJW3HE4wtomcDOK0L8WnGYHo6+guvk2O/cUWrK+2eTZDPhQYfW1KKxflK+zs5o9Q/1G/w9H0sNrTFwgxEu2NSn9gmRWu85Y+UTeDjGjvR23wFqeduEm3xFJuS8zlhmaOhlJJtGfYIfW/W/sIeOWHxjDkZ2aRs/qcttoeKBLTzZVBKsh5aXgpsOXq+v1HK+j0sga2O5t/c2SQQwY0pag7Y8gYTdjQ6i4qRg4OAS0SE6P"
+        ],
+
+    "ssh_permit_root_login": "no",
+    "ssh_password_authentication": "no",
+
+    // default across servers deny all except SSH.  ports reopened per package
+    "classes": ["firewall"],
+
+    "nginx_vhost": "_",
+    "nginx_listen_port": "80",
+    "nginx_serveraliases": "",
+
+    "apache_servername": "false",
+    "apache_serveraliases": ["*"],
+    "apache_listen_port": "8080",
+
+    "mysql_root_password": "pass123",
+
+    "php_modules": ["curl", "gd", "mcrypt", "mysql", "imap"]
+
+}

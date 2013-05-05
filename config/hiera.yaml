@@ -1,0 +1,19 @@
+:backends:
+  - json
+
+:logging:
+  console
+
+:hierarchy:
+  - %{::environment}/%{::certname}
+  - %{::environment}/%{::location}
+  - %{::environment}/%{::role}
+  - %{::environment}/common
+  - %{::certname}
+  - %{::location}
+  - %{::role}
+  - common
+  - project
+
+:json:
+  :datadir: "env/config"
