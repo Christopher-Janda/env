@@ -15,7 +15,7 @@
   - %{::certname}
   - ../../%{::role}
   - %{::role}
-  - ../../%{::common}
+  - ../../common
   - common
 
 :json:

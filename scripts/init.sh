@@ -40,4 +40,4 @@ then
 fi
 rm /tmp/sudoers.tmp
 
-puppet apply --environment $2 --hiera_config "env/config/hiera.yaml" --modulepath "env/modules" env/manifests/site.pp
+puppet apply --environment $2 --hiera_config "$1/env/config/hiera.yaml" --modulepath "$1/env/modules" $1/env/manifests/site.pp
