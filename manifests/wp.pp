@@ -1,5 +1,4 @@
 
-include wp
 class wp (
     $deploy_path = "www",
     $db_name = "wordpress",
@@ -12,6 +11,7 @@ class wp (
 ) {}
 
 class wp::config {
+    include wp
 
     file { "${env::deploy_path}/${wp::deploy_path}/wp-config.php":
         ensure      => file,
@@ -21,6 +21,9 @@ class wp::config {
 }
 
 class wp::db {
+    Class["mysql_server"] -> Class["wp::db"]
+
+    include wp
 
     mysql::grant { $wp::db_name:
         mysql_privileges    => 'ALL',

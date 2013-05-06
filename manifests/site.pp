@@ -21,9 +21,6 @@ if $environment == 'prod' {
 
 ######## CLASS DEFINITIONS ########
 
-# role priorities
-Class["mysql_server"] -> Class["wp::db"]
-
 import 'wp.pp'
 
 class firewall {
