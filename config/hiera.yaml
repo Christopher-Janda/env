@@ -5,17 +5,17 @@
   console
 
 :hierarchy:
-  - ../../%{::environment}/%{::certname}
+  - ../../config/%{::environment}/%{::certname}
   - %{::environment}/%{::certname}
-  - ../../%{::environment}/%{::role}
+  - ../../config/%{::environment}/%{::role}
   - %{::environment}/%{::role}
-  - ../../%{::environment}/common
+  - ../../config/%{::environment}/common
   - %{::environment}/common
-  - ../../%{::certname}
+  - ../../config/%{::certname}
   - %{::certname}
-  - ../../%{::role}
+  - ../../config/%{::role}
   - %{::role}
-  - ../../common
+  - ../../config/common
   - common
 
 :json:
