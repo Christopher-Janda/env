@@ -4,7 +4,7 @@ Vagrant::Config.run do |config|
 
     config_file = Dir.pwd + "/config/common.json"
     env_config_file = Dir.pwd + '/config/' + ENVIRONMENT + '/common.json'
-    project_file = File.expand_path("../..") + "/config/common.json"
+    project_file = File.expand_path("..") + "/config/common.json"
     json_config = JSON.parse( IO.read(config_file) )
 	project_config = JSON.parse( IO.read(project_file) )
     if File.file?(env_config_file)
