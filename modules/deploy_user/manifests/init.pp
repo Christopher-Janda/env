@@ -45,7 +45,7 @@ class deploy_user {
 
     file { "${env::scripts_dir}/deploy.sh":
         ensure  => file,
-        mode    => '700',
+        mode    => '0600',
         owner   => 'root',
         group   => $env::deploy_group,
         content => template('config/deploy/deploy.sh.erb'),

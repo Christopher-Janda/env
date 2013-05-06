@@ -1,0 +1,77 @@
+<?php
+// ** FILE MANAGED BY PUPPET ** //
+
+define('WP_HOME','<%= scope.lookupvar('wp::home') %>');
+define('WP_SITEURL','<%= scope.lookupvar('wp::siteurl') %>');
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', '<%= scope.lookupvar('wp::db_name') %>');
+
+/** MySQL database username */
+define('DB_USER', '<%= scope.lookupvar('wp::db_name') %>');
+
+/** MySQL database password */
+define('DB_PASSWORD', '<%= scope.lookupvar('wp::db_password') %>');
+
+/** MySQL hostname */
+define('DB_HOST', '<%= scope.lookupvar('wp::db_host') %>');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ */
+define('AUTH_KEY',         'L+^NQW#C+*ON5RH@1si,%pk5}I8<30#11f9)qaNadF-dqr-!#xll>Y3r|BqhNUyx');
+define('SECURE_AUTH_KEY',  '*,|ld#^t=2DjfA80eGz6xL75#|nNS3v%rbyGiXxLa5(UB|]IqsW6%5E$Y,@6gBwG');
+define('LOGGED_IN_KEY',    'Q2+z$&|MeByl5`/3+:<<IuwW-tGr`Qy<zv6-[Y;PbtO|aYvbp*d?n{=;rt4.nr|Q');
+define('NONCE_KEY',        'C^a.68BU!]6XhG{yZY%7O]s90FtNK5xo{zo83vZR!#aSnUNs}>ZKPn9!@CN+.@pl');
+define('AUTH_SALT',        '`[(_L9MhcJ ;ai4j-Y#:BAG3FB6~>v(0E=I7 +3{p]#o4CM=T~shOciP49,o-{gl');
+define('SECURE_AUTH_SALT', 'gRLnf ~jOp_gH7W)>lM6PZXQOro7r+LZ4TR6,>|>(u]|>^`_ch`$,{a%>x%d-7tR');
+define('LOGGED_IN_SALT',   '`/jm]</+e|aAAWwT/Y]Rd{v]N:=C|8enO>G}Tgx;<CN/e.!sX(7,|8j0Yc3U5i.B');
+define('NONCE_SALT',       '}.YnR:dn@7lJPT1cMCg6(C]Qdq4Xic<6-!q*@P&R-k-Zr Q&K$@{&3%V+blosP4/');
+
+/* Multisite */
+define('WP_ALLOW_MULTISITE', <%= scope.lookupvar('wp::multisite') %>);
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = '<%= scope.lookupvar('wp::db_prefix') %>';
+
+/**
+ * WordPress Localized Language, defaults to English.
+ *
+ * Change this to localize WordPress. A corresponding MO file for the chosen
+ * language must be installed to wp-content/languages. For example, install
+ * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * language support.
+ */
+define('WPLANG', '');
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');

@@ -1,13 +1,9 @@
 
-import 'init.pp'
 include env
+import 'init.pp'
+
 node default {
     hiera_include('classes')
-}
-
-file{ "${env::webroot}/db/emails.db":
-    ensure  => present,
-    mode    => 770,
 }
 
 # robots.txt
@@ -24,6 +20,11 @@ if $environment == 'prod' {
 }
 
 ######## CLASS DEFINITIONS ########
+
+# role priorities
+Class["mysql_server"] -> Class["wp::db"]
+
+import 'wp.pp'
 
 class firewall {
     include ufw
@@ -97,4 +98,10 @@ class mysql_server {
         root_password   => $env::mysql_root_password,
     }
 
+    ufw::allow {"allow-mysql-3306-from-all":
+        port        => $env::mysql_listen_port,
+    }
+
 }
+
+

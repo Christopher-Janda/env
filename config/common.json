@@ -31,6 +31,7 @@
     "apache_listen_port": "8080",
 
     "mysql_root_password": "pass123",
+    "mysql_listen_port": "3306",
 
     "php_modules": ["curl", "gd", "mcrypt", "mysql", "imap"]
 

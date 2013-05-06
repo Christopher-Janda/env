@@ -17,6 +17,7 @@ class env {
     $apache_servername = hiera('apache_servername')
     $php_modules = hiera_array('php_modules')
     $mysql_root_password = hiera('mysql_root_password')
+    $mysql_listen_port = hiera('mysql_listen_port')
 
     ## DYNAMIC SETTINGS
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"
