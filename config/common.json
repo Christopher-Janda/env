@@ -1,8 +1,8 @@
 {
-    // deploy_path = /home/{deploy_user}/{project_name}/{environment}
-
+    // MUST BE DECLARED IN PARENT PROJECT ../../config/common.json IN ORDER FOR VAGRANT TO WORK
     "project_name": "default",
 
+    // deploy_path = /home/{deploy_user}/{project_name}/{environment}
     "deploy_user": "deploy",
     "deploy_group": "www-data",
 
