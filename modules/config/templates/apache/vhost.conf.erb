@@ -6,6 +6,13 @@ Listen <%= port %>
 <VirtualHost *:<%= port %>>
     ServerAdmin <%= server_admin_email %>
     DocumentRoot <%= real_docroot %>
+    SetEnv PHP_ENV <%= scope.lookupvar('::environment') %>
+    <Directory <%= real_docroot %>>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
 <% if server_name_value != false -%>
     ServerName <%= server_name_value %>
 <% end -%>

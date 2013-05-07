@@ -1,27 +1,16 @@
 
 include env
 import 'init.pp'
+class import_project {
+    import '../../config/manifests/*.pp'
+}
+include config
 
 node default {
     hiera_include('classes')
 }
 
-# robots.txt
-if $environment == 'prod' {
-    file{ "${emv::webroot}/robots.txt":
-        ensure      => present,
-        content     => template('config/site/robots.txt.erb'),
-    }
-} else {
-    file{ "${env::webroot}/robots.txt":
-        ensure      => present,
-        content     => inline_template("User-agent: *\nDisallow: /\n"),
-    }
-}
-
 ######## CLASS DEFINITIONS ########
-
-import 'wp.pp'
 
 class firewall {
     include ufw

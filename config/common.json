@@ -33,6 +33,8 @@
     "mysql_root_password": "pass123",
     "mysql_listen_port": "3306",
 
-    "php_modules": ["curl", "gd", "mcrypt", "mysql", "imap"]
+    "php_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
+
+    "robots_disallow": []
 
 }
