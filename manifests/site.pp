@@ -90,6 +90,7 @@ class mysql_server {
 
     class { "mysql":
         root_password   => $env::mysql_root_password,
+        template        => 'config/mysql/my.cnf.erb',
     }
 
     ufw::allow {"allow-mysql-3306-from-all":
