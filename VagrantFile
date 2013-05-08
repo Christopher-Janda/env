@@ -24,11 +24,11 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "vagrant-root", "#{deploy_path}", File.expand_path("..")
 
     project_config['vagrant'].each do |key, value|
-        config.vm.define key do |data|
-            data.vm.host_name = value['host']
-            data.vm.network :hostonly, value['ip']
+        config.vm.define key do |config_vm|
+            config_vm.vm.host_name = value['host']
+            config_vm.vm.network :hostonly, value['ip']
             value['ports'].each do |to, from|
-                data.vm.forward_port to, from
+                config_vm.vm.forward_port to.to_i, from.to_i
             end
         end
     end
