@@ -4,7 +4,7 @@ Vagrant::Config.run do |config|
 
     config_file = Dir.pwd + "/config/common.json"
     env_config_file = Dir.pwd + '/config/' + ENVIRONMENT + '/common.json'
-    project_file = File.expand_path("..") + "/config/common.json"
+    project_file = File.expand_path("..") + "/config/project.json"
     json_config = JSON.parse( IO.read(config_file) )
 	project_config = JSON.parse( IO.read(project_file) )
     if File.file?(env_config_file)
@@ -23,18 +23,13 @@ Vagrant::Config.run do |config|
 
     config.vm.share_folder "vagrant-root", "#{deploy_path}", File.expand_path("..")
 
-
-    vagrant_hosts_file = File.expand_path("..") + "/config/VagrantHosts.rb"
-    if File.file?(vagrant_hosts_file)
-        load vagrant_hosts_file
-    else
-        config.vm.define :web do |web_config|
-            web_config.vm.host_name = "www.#{project_name}"
-            web_config.vm.network :hostonly, "192.168.33.1"
-            web_config.vm.forward_port 80, 80
-            web_config.vm.forward_port 80, 8080
-            web_config.vm.forward_port 8080, 8888
-            web_config.vm.forward_port 3306, 3306
+    project_config['vagrant'].each do |key, value|
+        config.vm.define key do |data|
+            data.vm.host_name = value['host']
+            data.vm.network :hostonly, value['ip']
+            value['ports'].each do |to, from|
+                data.vm.forward_port to, from
+            end
         end
     end
 
