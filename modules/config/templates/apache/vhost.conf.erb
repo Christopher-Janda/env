@@ -7,6 +7,9 @@ Listen <%= port %>
     ServerAdmin <%= server_admin_email %>
     DocumentRoot <%= real_docroot %>
     SetEnv PHP_ENV <%= scope.lookupvar('::environment') %>
+<% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
+    EnableSendfile off
+<% end -%>
     <Directory <%= real_docroot %>>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All

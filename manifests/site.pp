@@ -42,7 +42,7 @@ class nginx_server {
         notify          => Service['nginx'],
     }
 
-    ufw::allow {"allow-http-80-from-all":
+    ufw::allow {"allow-http-nginx-${env::nginx_listen_port}-from-all":
         port        => $env::nginx_listen_port,
     }
 }
@@ -50,7 +50,7 @@ class nginx_server {
 class apache_server {
 
     class { "apache":
-        port        => $env::apache_listen_port,
+        # port        => $env::apache_listen_port,
         template    => 'config/apache/apache.conf.erb',
     }
 
@@ -59,6 +59,10 @@ class apache_server {
         server_name => $env::apache_servername,
         port        => $env::apache_listen_port,
         template    => 'config/apache/vhost.conf.erb',
+    }->
+    file { "${apache::config_dir}/sites-enabled/000-default":
+        ensure      => absent,
+        notify      => Service["apache"]
     }
 
     file{ "${apache::config_dir}/mods-enabled/rewrite.load":
@@ -74,6 +78,10 @@ class apache_server {
 
     php::module { $env::php_modules:
         notify  => Service["apache"],
+    }
+
+    ufw::allow {"allow-http-apache-${env::apache_listen_port}-from-all":
+        port        => $env::nginx_listen_port,
     }
 
 }

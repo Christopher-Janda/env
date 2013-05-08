@@ -29,6 +29,7 @@
     "apache_servername": "false",
     "apache_serveraliases": ["*"],
     "apache_listen_port": "8080",
+    "apache_index_rewrite": "false",
 
     "mysql_root_password": "pass123",
     "mysql_listen_port": "3306",
