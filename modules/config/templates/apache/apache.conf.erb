@@ -210,6 +210,11 @@ LogLevel warn
 Include mods-enabled/*.load
 Include mods-enabled/*.conf
 
+# Custom settings
+<% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
+EnableSendfile off
+<% end -%>
+
 # Include all the user configurations:
 Include httpd.conf
 

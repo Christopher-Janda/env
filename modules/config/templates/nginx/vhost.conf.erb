@@ -7,6 +7,10 @@ server {
     index index.php index.html;
     server_name <%= name %> <%= serveraliases %>;
 
+<% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
+    sendfile off;
+<% end -%>
+
     access_log  <%= scope.lookupvar('nginx::log_dir')%>/<%= name %>.access.log;
     error_log  <%= scope.lookupvar('nginx::log_dir')%>/<%= name %>.error.log;
 

@@ -18,6 +18,7 @@ class env {
     $php_modules = hiera_array('php_modules')
     $mysql_root_password = hiera('mysql_root_password')
     $mysql_listen_port = hiera('mysql_listen_port')
+    $disable_sendfile = hiera('disable_sendfile')
 
     ## DYNAMIC SETTINGS
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"
