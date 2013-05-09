@@ -22,6 +22,8 @@
     // default across servers deny all except SSH.  ports reopened per package
     "classes": ["firewall"],
 
+    "disable_sendfile": "false",
+
     "nginx_vhost": "_",
     "nginx_listen_port": "80",
     "nginx_serveraliases": "",
