@@ -1,7 +1,6 @@
 
 class config {
     include robots_txt
-    include htaccess
 }
 
 class robots_txt {
@@ -12,12 +11,5 @@ class robots_txt {
     file{ "${env::webroot}/robots.txt":
         ensure      => file,
         content     => template('config/site/robots.txt.erb'),
-    }
-}
-
-class htaccess {
-    file{ "${env::webroot}/.htaccess":
-        ensure      => file,
-        content     => template('config/site/.htaccess.erb'),
     }
 }
