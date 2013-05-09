@@ -1,4 +1,6 @@
 {
+    "disable_sendfile": "true",
+
     "deploy_pass": "pass123",
     "deploy_hash": "$1$/aENfaOp$Mbot3VfBSQwWFi4p2/SE90",
     "deploy_keys": [],
