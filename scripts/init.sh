@@ -1,7 +1,7 @@
 #!/bin/bash
 # requires root access
 
-cd $1
+cd $1/$2
 
 . /etc/lsb-release
 
@@ -32,7 +32,7 @@ then
     rm /tmp/sudoers.tmp
 fi
 cp /etc/sudoers /tmp/sudoers.tmp
-echo "deploy ALL=(ALL) NOPASSWD:$1/env/scripts/deploy.sh" >> /tmp/sudoers.tmp
+echo "deploy ALL=(ALL) NOPASSWD:$1/deploy_$2.sh" >> /tmp/sudoers.tmp
 visudo -c -f /tmp/sudoers.tmp
 if [ "$?" -eq "0" ]
 then
@@ -40,4 +40,4 @@ then
 fi
 rm /tmp/sudoers.tmp
 
-puppet apply --environment $2 --hiera_config "$1/env/config/hiera.yaml" --modulepath "$1/env/modules" --templatedir "$1/config/templates" $1/env/manifests/site.pp
+puppet apply --environment $2 --hiera_config "$1/$2/env/config/hiera.yaml" --modulepath "$1/$2/env/modules" --templatedir "$1/$2/config/templates" $1/$2/env/manifests/site.pp

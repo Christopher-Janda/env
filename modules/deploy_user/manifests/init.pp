@@ -43,16 +43,16 @@ class deploy_user {
         hasrestart  => true,
     }
 
-    file { "${env::scripts_dir}/deploy.sh":
+    file { "${env::deploy_script}":
         ensure  => file,
         mode    => '0600',
         owner   => 'root',
         group   => $env::deploy_group,
         content => template('config/deploy/deploy.sh.erb'),
     }->
-    exec { "tr -d '\015' < ${env::scripts_dir}/deploy.sh > /tmp/temp.sh && mv /tmp/temp.sh ${env::scripts_dir}/deploy.sh":
+    exec { "tr -d '\015' < ${env::deploy_script} > /tmp/temp.sh && mv /tmp/temp.sh ${env::deploy_script}":
     }->
-    exec { "chmod 700 ${env::scripts_dir}/deploy.sh; chgrp ${env::deploy_group} ${env::scripts_dir}/deploy.sh": }
+    exec { "chmod 700 ${env::deploy_script}; chgrp ${env::deploy_group} ${env::deploy_script}": }
 
     if $is_virtual == false {
         file {"/home/${env::deploy_user}":
