@@ -81,7 +81,7 @@ class apache_server {
     }
 
     ufw::allow {"allow-http-apache-${env::apache_listen_port}-from-all":
-        port        => $env::nginx_listen_port,
+        port        => $env::apache_listen_port,
     }
 
 }
