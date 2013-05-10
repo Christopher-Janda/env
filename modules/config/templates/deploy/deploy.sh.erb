@@ -7,6 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 cd <%= scope.lookupvar('env::deploy_path') %>
-puppet apply --environment <%= environment %> --hiera_config "env/config/hiera.yaml" --modulepath "env/modules" --templatedir "config/templates" env/manifests/site.pp &
+puppet apply --environment <%= environment %> --hiera_config "env/config/hiera.yaml" --modulepath "env/modules" \
+    --templatedir "config/templates" env/manifests/site.pp <% if environment == 'dev' -%>&<% end %>
 
 exit

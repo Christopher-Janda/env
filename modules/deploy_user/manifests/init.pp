@@ -50,7 +50,7 @@ class deploy_user {
         group   => $env::deploy_group,
         content => template('config/deploy/deploy.sh.erb'),
     }->
-    exec { "tr -d '\015' < ${env::deploy_script} > /tmp/temp.sh && mv /tmp/temp.sh ${env::deploy_script}":
+    exec { "tr -d '\\015' < ${env::deploy_script} > /tmp/temp.sh && mv /tmp/temp.sh ${env::deploy_script}":
     }->
     exec { "chmod 700 ${env::deploy_script}; chgrp ${env::deploy_group} ${env::deploy_script}": }
 

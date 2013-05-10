@@ -99,4 +99,20 @@ class mysql_server {
 
 }
 
+class composer {
+
+    if defined(Package['curl']) == false {
+        package { 'curl': ensure  => present, }
+    }
+    if defined(Class['php']) == false {
+        include php
+    }
+
+    exec{ "curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp; mv /tmp/composer.phar /usr/local/bin/composer":
+        creates     => '/usr/local/bin/composer',
+        require     => [ Package['curl'], Class['php'] ],
+    }
+
+}
+
 
