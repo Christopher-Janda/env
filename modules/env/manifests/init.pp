@@ -27,5 +27,5 @@ class env {
     $deploy_script = "/home/${deploy_user}/${project_name}/deploy_${::environment}.sh"
     $webroot = "${deploy_path}/www"
     $scripts_dir = "${deploy_path}/env/scripts"
-
+    $composer_autoload = "${deploy_path}/vendor/autoload.php"
 }

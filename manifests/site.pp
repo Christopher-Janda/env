@@ -6,6 +6,10 @@ class import_project {
 }
 include config
 
+package { "vim":
+    ensure      => installed,
+}
+
 node default {
     hiera_include('classes')
 }
@@ -48,6 +52,8 @@ class nginx_server {
 }
 
 class apache_server {
+
+    include composer
 
     class { "apache":
         # port        => $env::apache_listen_port,
@@ -101,6 +107,14 @@ class mysql_server {
 
 class composer {
 
+    $flags = $::environment ? {
+        dev     => '--dev',
+        default => '',
+    }
+
+    if defined(Package['git']) == false {
+        package { 'git': ensure => present, }
+    }
     if defined(Package['curl']) == false {
         package { 'curl': ensure  => present, }
     }
@@ -111,6 +125,12 @@ class composer {
     exec{ "curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp; mv /tmp/composer.phar /usr/local/bin/composer":
         creates     => '/usr/local/bin/composer',
         require     => [ Package['curl'], Class['php'] ],
+    }->
+    exec{ "composer install ${flags}":
+        cwd         => $env::deploy_path,
+        onlyif      => "test -f ${env::deploy_path}/composer.json",
+        require     => Package['git'],
+        environment => "HOME=/home/${env::deploy_user}",
     }
 
 }

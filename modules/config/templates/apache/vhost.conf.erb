@@ -7,6 +7,12 @@ Listen <%= port %>
     ServerAdmin <%= server_admin_email %>
     DocumentRoot <%= real_docroot %>
     SetEnv PHP_ENV <%= scope.lookupvar('::environment') %>
+    SetEnv COMPOSER_AUTOLOAD <%= scope.lookupvar('env::composer_autoload') %>
+<% if scope.lookupvar('::environment') == 'dev' -%>
+    php_flag display_errors on
+    # 6143 = E_ALL
+    php_value error_reporting 6143
+<% end -%>
 <% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
     EnableSendfile off
 <% end -%>
