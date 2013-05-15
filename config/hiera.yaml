@@ -5,14 +5,14 @@
   console
 
 :hierarchy:
-  - ../../config/%{::environment}/%{::certname}
-  - %{::environment}/%{::certname}
+  - ../../config/%{::environment}/%{::fqdn}
+  - %{::environment}/%{::fqdn}
   - ../../config/%{::environment}/%{::role}
   - %{::environment}/%{::role}
   - ../../config/%{::environment}/common
   - %{::environment}/common
-  - ../../config/%{::certname}
-  - %{::certname}
+  - ../../config/%{::fqdn}
+  - %{::fqdn}
   - ../../config/%{::role}
   - %{::role}
   - ../../config/common
