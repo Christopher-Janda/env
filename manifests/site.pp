@@ -6,9 +6,13 @@ class import_project {
 }
 include config
 
+
+### MISC ###
 package { "vim":
     ensure      => installed,
 }
+include mysql::client
+
 
 node default {
     hiera_include('classes')
@@ -48,6 +52,7 @@ class nginx_server {
 
     ufw::allow {"allow-http-nginx-${env::nginx_listen_port}-from-all":
         port        => $env::nginx_listen_port,
+        ip          => 'any',
     }
 }
 
@@ -88,6 +93,7 @@ class apache_server {
 
     ufw::allow {"allow-http-apache-${env::apache_listen_port}-from-all":
         port        => $env::apache_listen_port,
+        ip          => 'any',
     }
 
 }
@@ -101,6 +107,7 @@ class mysql_server {
 
     ufw::allow {"allow-mysql-3306-from-all":
         port        => $env::mysql_listen_port,
+        ip          => 'any',
     }
 
 }
