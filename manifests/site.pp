@@ -1,6 +1,7 @@
 
 include env
 import 'init.pp'
+import 'hosts.pp'
 class import_project {
     import '../../config/manifests/*.pp'
 }

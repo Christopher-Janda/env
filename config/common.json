@@ -19,6 +19,8 @@
     "ssh_permit_root_login": "no",
     "ssh_password_authentication": "no",
 
+    "hosts": {},
+
     // default across servers deny all except SSH.  ports reopened per package
     "classes": ["firewall"],
 
