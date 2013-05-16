@@ -91,6 +91,11 @@ class apache_server {
         notify  => Service["apache"],
     }
 
+    php::module { "apc":
+        notify           => Service["apache"],
+        package_prefix   => "php-",
+    }
+
     ufw::allow {"allow-http-apache-${env::apache_listen_port}-from-all":
         port        => $env::apache_listen_port,
         ip          => 'any',
