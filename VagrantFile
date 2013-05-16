@@ -22,7 +22,7 @@ Vagrant::Config.run do |config|
     config.vm.box = "precise32"
     config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
-    config.vm.share_folder "vagrant-root", "#{deploy_path}", File.expand_path("..")
+    config.vm.share_folder "vagrant-root", "#{deploy_path}", File.expand_path(".."), :extra => 'dmode=777,fmode=777' 
 
     project_config['vagrant'].each do |key, value|
         config.vm.define key do |config_vm|
