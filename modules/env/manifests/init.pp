@@ -1,6 +1,6 @@
 
 class env (
-    $webroot = '',
+    $custom_webroot = '',
 ) {
 
     # HIERA DATA
@@ -27,8 +27,10 @@ class env (
     ## DYNAMIC SETTINGS
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"
     $deploy_script = "/home/${deploy_user}/${project_name}/deploy_${::environment}.sh"
-    if $webroot == '' {
+    if $custom_webroot == '' {
         $webroot = "${deploy_path}/www"
+    } else {
+        $webroot = $custom_webroot
     }
     $scripts_dir = "${deploy_path}/env/scripts"
     $composer_autoload = "${deploy_path}/vendor/autoload.php"
