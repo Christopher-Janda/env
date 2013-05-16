@@ -206,6 +206,10 @@ ErrorLog ${APACHE_LOG_DIR}/error.log
 #
 LogLevel warn
 
+###  PHP ###
+php_value apc.write_lock 1
+php_value apc.slam_defense 0
+
 # Include module configuration:
 Include mods-enabled/*.load
 Include mods-enabled/*.conf
