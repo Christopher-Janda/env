@@ -138,10 +138,10 @@ class composer {
     exec{ "curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp; mv /tmp/composer.phar /usr/local/bin/composer":
         creates     => '/usr/local/bin/composer',
         require     => [ Package['curl'], Class['php'] ],
+        onlyif      => "test -f ${env::deploy_path}/composer.json",
     }->
     exec{ "composer install ${flags}":
         cwd         => $env::deploy_path,
-        onlyif      => "test -f ${env::deploy_path}/composer.json",
         require     => Package['git'],
         environment => "HOME=/home/${env::deploy_user}",
     }
