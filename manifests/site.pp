@@ -29,7 +29,9 @@ class firewall {
     }
 }
 
-class nginx_server {
+class nginx_server (
+    $vhost_config = 'config/nginx/vhost.conf.erb'
+) {
 
     class {"nginx":
         template            => 'nginx/conf.d/nginx.conf.erb'
@@ -46,7 +48,7 @@ class nginx_server {
         port            => $env::nginx_listen_port,
         owner           => $env::deploy_user,
         groupowner      => $env::deploy_group,
-        template        => 'config/nginx/vhost.conf.erb',
+        template        => $vhost_config,
         serveraliases   => $env::nginx_serveraliases,
         notify          => Service['nginx'],
     }
