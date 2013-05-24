@@ -41,4 +41,4 @@ EOL
 
 fi
 
-puppet apply --hiera_config "env/config/hiera.yaml" --modulepath "env/modules" env/manifests/init.pp
+puppet apply --environment deploy --hiera_config "env/config/hiera.yaml" --modulepath "env/modules" env/manifests/init.pp
