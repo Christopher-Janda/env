@@ -17,7 +17,7 @@
   - %{::role}
   - ../../config/common
   - common
-  - deploy
+  - ../../deploy
   - ../../config/project
 
 :json:
