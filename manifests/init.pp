@@ -7,9 +7,11 @@ include env
 
 class { "deploy_user": }
 
-file { "${env::scripts_dir}/init.sh":
-    ensure  => file,
-    mode    => 'u+x',
-    owner   => $env::deploy_user,
-    group   => $env::deploy_group,
+if $::environment != 'deploy' {
+    file { "${env::scripts_dir}/init.sh":
+        ensure  => file,
+        mode    => 'u+x',
+        owner   => $env::deploy_user,
+        group   => $env::deploy_group,
+    }
 }
