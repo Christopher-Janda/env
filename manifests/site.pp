@@ -146,6 +146,11 @@ class composer {
         cwd         => $env::deploy_path,
         require     => Package['git'],
         environment => "HOME=/home/${env::deploy_user}",
+    }->
+    exec{ "composer update ${flags}":
+        cwd         => $env::deploy_path,
+        environment => "HOME=/home/${env::deploy_user}",
+        onlyif      => "test -f ${env::deploy_path}/composer.lock"
     }
 
 }
