@@ -39,7 +39,8 @@
     "mysql_listen_port": "3306",
     "mysql_bind_address": "0.0.0.0",
 
-    "php_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
+    "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
+    "php_modules": ["apc"],
 
     "robots_disallow": []
 

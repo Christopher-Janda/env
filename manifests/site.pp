@@ -90,13 +90,13 @@ class apache_server {
         require => Package["apache"],
     }
 
-    php::module { $env::php_modules:
+    php::module { $env::php5_modules:
         notify  => Service["apache"],
     }
 
-    php::module { "apc":
-        notify           => Service["apache"],
-        package_prefix   => "php-",
+    php::module { $env::php_modules:
+        notify          => Service["apache"],
+        package_prefix  => "php-",
     }
 
     ufw::allow {"allow-http-apache-${env::apache_listen_port}-from-all":
