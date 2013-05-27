@@ -35,4 +35,10 @@ class env (
     }
     $scripts_dir = "${deploy_path}/env/scripts"
     $composer_autoload = "${deploy_path}/vendor/autoload.php"
+
+    file_line{ 'PHP CLI environment"':
+        ensure  => present,
+        path    => '/etc/environment',
+        line    => "PHP_ENV=\"${::environment}\"",
+    }
 }
