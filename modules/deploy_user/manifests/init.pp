@@ -65,5 +65,12 @@ class deploy_user {
             require     => User[$env::deploy_user],
         }
     }
+    else
+    {
+        file{"/home/vagrant/${::environment}":
+            ensure      => link,
+            target      => $env::deploy_path,
+        }
+    }
 }
 
