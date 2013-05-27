@@ -1,6 +1,6 @@
 User-agent: *
-<% if robots_disallow.any? -%>
-<% robots_disallow.each do |disallow| -%>
+<% if @robots_disallow.any? -%>
+<% @robots_disallow.each do |disallow| -%>
 Disallow: <%= disallow %>
 <% end -%>
 <% else -%>

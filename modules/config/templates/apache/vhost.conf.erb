@@ -1,11 +1,11 @@
 # File Managed by Puppet
 
-NameVirtualHost *:<%= port %>
-Listen <%= port %>
+NameVirtualHost *:<%= @port %>
+Listen <%= @port %>
 
-<VirtualHost *:<%= port %>>
-    ServerAdmin <%= server_admin_email %>
-    DocumentRoot <%= real_docroot %>
+<VirtualHost *:<%= @port %>>
+    ServerAdmin <%= @server_admin_email %>
+    DocumentRoot <%= @real_docroot %>
     SetEnv PHP_ENV <%= scope.lookupvar('::environment') %>
     SetEnv COMPOSER_AUTOLOAD <%= scope.lookupvar('env::composer_autoload') %>
 <% if scope.lookupvar('::environment') == 'dev' -%>
@@ -16,22 +16,22 @@ Listen <%= port %>
 <% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
     EnableSendfile off
 <% end -%>
-    <Directory <%= real_docroot %>>
+    <Directory <%= @real_docroot %>>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
         Order allow,deny
         allow from all
     </Directory>
-<% if server_name_value != false -%>
-    ServerName <%= server_name_value %>
+<% if @server_name_value != false -%>
+    ServerName <%= @server_name_value %>
 <% end -%>
-<% if serveraliases != "" -%>
-<% if serveraliases.is_a? Array -%>
-    ServerAlias <% serveraliases.each do |name| -%> <%= name %><% end %>
+<% if @serveraliases != "" -%>
+<% if @serveraliases.is_a? Array -%>
+    ServerAlias <% @serveraliases.each do |name| -%> <%= @name %><% end %>
 <% else -%>
-    ServerAlias <%= serveraliases %>
+    ServerAlias <%= @serveraliases %>
 <% end -%>
 <% end -%>
-    ErrorLog  ${APACHE_LOG_DIR}/<%= name %>-error.log
-    CustomLog ${APACHE_LOG_DIR}/<%= name %>-access.log combined
+    ErrorLog  ${APACHE_LOG_DIR}/<%= @name %>-error.log
+    CustomLog ${APACHE_LOG_DIR}/<%= @name %>-access.log combined
 </VirtualHost>
