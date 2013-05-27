@@ -160,6 +160,12 @@ class composer {
         onlyif      => "test -f ${env::deploy_path}/composer.lock"
     }
 
+    file_line { "Composer CLI autoload":
+        ensure  => present,
+        path    => '/etc/environment',
+        line    => "COMPOSER_AUTOLOAD=\"${env::composer_autoload}\"",
+    }
+
 }
 
 
