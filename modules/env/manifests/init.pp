@@ -18,6 +18,7 @@ class env (
     $apache_listen_port = hiera('apache_listen_port')
     $apache_servername = hiera('apache_servername')
     $php_modules = hiera_array('php_modules')
+    $php5_modules = hiera_array('php5_modules')
     $mysql_root_password = hiera('mysql_root_password')
     $mysql_listen_port = hiera('mysql_listen_port')
     $disable_sendfile = hiera('disable_sendfile')
