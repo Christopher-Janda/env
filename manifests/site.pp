@@ -21,8 +21,6 @@ node default {
 
 ######## CLASS DEFINITIONS ########
 
-Class['apache_server'] -> Class['mysql_server'] -> Class['composer']
-
 class firewall {
     include ufw
 
@@ -132,6 +130,14 @@ class composer {
     $flags = $::environment ? {
         dev     => '--dev',
         default => '',
+    }
+
+    if defined(Class['apache_server']) == true {
+        require apache_server
+    }
+
+    if defined(Class['mysql_server']) == true {
+        require mysql_servers
     }
 
     if defined(Package['git']) == false {
