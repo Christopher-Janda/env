@@ -137,7 +137,7 @@ class composer {
     }
 
     if defined(Class['mysql_server']) == true {
-        require mysql_servers
+        require mysql_server
     }
 
     if defined(Package['git']) == false {
