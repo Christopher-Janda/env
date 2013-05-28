@@ -56,7 +56,7 @@ class deploy_user {
         exec { "chmod 700 ${env::deploy_script}; chgrp ${env::deploy_group} ${env::deploy_script}": }
     }
 
-    if $is_virtual == false {
+    if $::environment != 'dev' {
         file {"/home/${env::deploy_user}":
             ensure      => directory,
             recurse     => true,
