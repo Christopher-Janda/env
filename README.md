@@ -21,4 +21,4 @@ Env setup
     
 5. All manifests placed in `<parent_project>/config/manifests` will automatically run when provisioning, there must be at least one .pp file in that directory, even if it is an empty file.
 6. Custom config file templates for project can be placed in `<parent_project>/config/templates/`
-7. Put custom enviroment config settings in `<project_parent>/config/dev/`
+7. Put custom enviroment .json config files in `<project_parent>/config/dev/`, settings in `<project_parent>/config/dev/common.json` will override settings in `<project_parent>/config/common.json`
