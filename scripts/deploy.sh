@@ -5,7 +5,7 @@
 PROJECT_PATH="/home/$1/$2"
 DEPLOY_PATH="$PROJECT_PATH/$3"
 
-mkdir -p $DEPLOY_PATH
+mkdir -p $DEPLOY_PATH/config
 
 wget --no-check-certificate https://github.com/Riser/env/archive/master.tar.gz
 tar xpvf master.tar.gz
