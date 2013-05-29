@@ -3,7 +3,7 @@ Env setup
 1. Add as submodule in parent project:  `git submodule add git@github.com:riser/env.git` in parent project root.
 2. Enter env directory: `cd env`
 3. Initialize env submodules: `git submodule update --init`
-4. Create file `<parent_project>/config/project.json` with something similar to the following:
+4. Create config files outside of env, you'll need `<parent_project>/config/project.json` with something similar to the following:
 
         {
             "project_name": "seed-project",
