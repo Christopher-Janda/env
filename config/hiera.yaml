@@ -6,13 +6,17 @@
 
 :hierarchy:
   - ../../config/%{::environment}/%{::fqdn}
+  - ../../config/%{::environment}/%{::hostname}
   - %{::environment}/%{::fqdn}
+  - %{::environment}/%{::hostname}
   - ../../config/%{::environment}/%{::role}
   - %{::environment}/%{::role}
   - ../../config/%{::environment}/common
   - %{::environment}/common
   - ../../config/%{::fqdn}
+  - ../../config/%{::hostname}
   - %{::fqdn}
+  - %{::hostname}
   - ../../config/%{::role}
   - %{::role}
   - ../../config/common
