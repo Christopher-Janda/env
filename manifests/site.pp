@@ -34,7 +34,8 @@ class nginx_server (
 ) {
 
     class {"nginx":
-        template            => 'nginx/conf.d/nginx.conf.erb'
+        template            => 'nginx/conf.d/nginx.conf.erb',
+        worker_connections  => hiera('nginx_worker_connections'),
     }
     file { "${nginx::vdir}":
         ensure      => directory,
