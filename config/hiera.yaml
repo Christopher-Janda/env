@@ -7,21 +7,20 @@
 :hierarchy:
   - ../../config/%{::environment}/%{::fqdn}
   - ../../config/%{::environment}/%{::hostname}
+  - ../../config/%{::fqdn}
+  - ../../config/%{::hostname}
   - %{::environment}/%{::fqdn}
   - %{::environment}/%{::hostname}
+  - %{::fqdn}
+  - %{::hostname}
   - ../../config/%{::environment}/%{::role}
   - %{::environment}/%{::role}
   - ../../config/%{::environment}/common
   - %{::environment}/common
-  - ../../config/%{::fqdn}
-  - ../../config/%{::hostname}
-  - %{::fqdn}
-  - %{::hostname}
   - ../../config/%{::role}
   - %{::role}
   - ../../config/common
   - common
-  - ../../deploy
   - ../../config/project
 
 :json:
