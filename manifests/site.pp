@@ -104,6 +104,11 @@ class apache_server {
         ip          => 'any',
     }
 
+    php::conf { [ 'mysqli', 'pdo', 'pdo_mysql', ]:
+        require => Package['php-mysql'],
+        notify  => Service['apache'],
+    }
+
 }
 
 class mysql_server {
@@ -111,11 +116,6 @@ class mysql_server {
     class { "mysql":
         root_password   => $env::mysql_root_password,
         template        => 'config/mysql/my.cnf.erb',
-    }
-
-    php::conf { [ 'mysqli', 'pdo', 'pdo_mysql', ]:
-        require => Package['php-mysql'],
-        notify  => Service['apache'],
     }
 
     ufw::allow {"allow-mysql-3306-from-all":
