@@ -2,8 +2,8 @@
 # requires root
 # sudo curl -sS https://raw.github.com/riser/env/master/scripts/deploy.sh | bash -s {deploy_user} {project_name} {environment} {deploy_key}
 
-PROJECT_PATH = "/home/$1/$2"
-DEPLOY_PATH = "$PROJECT_PATH/$3"
+PROJECT_PATH="/home/$1/$2"
+DEPLOY_PATH="$PROJECT_PATH/$3"
 
 mkdir -p $DEPLOY_PATH
 
