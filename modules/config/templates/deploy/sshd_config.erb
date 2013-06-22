@@ -26,6 +26,7 @@ LogLevel INFO
 LoginGraceTime 120
 PermitRootLogin <%= scope.lookupvar('env::ssh_permit_root_login') %>
 StrictModes yes
+PermitUserEnvironment yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes
