@@ -126,6 +126,26 @@ class mysql_server {
 
 }
 
+class ftp_server {
+
+    include vsftp
+
+    ufw::allow {"allow-ftp${env::ftp_listen_port}-from-all":
+        port        => $env::ftp_listen_port,
+        ip          => 'any',
+    }
+
+    ufw::allow {"allow-ftp20-from-all":
+        port        => 20,
+        ip          => 'any',
+    }
+
+    ufw::allow {"allow-ftp-passv-from-all":
+        port        => "${env::ftp_pasv_min_port}:${env::ftp_pasv_max_port}",
+        ip          => 'any',
+    }
+}
+
 class composer {
 
     $flags = $::environment ? {

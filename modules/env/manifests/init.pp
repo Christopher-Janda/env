@@ -24,6 +24,11 @@ class env (
     $disable_sendfile = hiera('disable_sendfile')
     $apache_index_rewrite = hiera('apache_index_rewrite')
     $mysql_bind_address = hiera('mysql_bind_address')
+    $ftp_listen_port = hiera('ftp_listen_port')
+    $ftp_pasv_min_port = hiera('ftp_pasv_min_port')
+    $ftp_pasv_max_port = hiera('ftp_pasv_max_port')
+    $ftp_dir = hiera('ftp_dir')
+    $ftp_users = hiera('ftp_users')
 
     ## DYNAMIC SETTINGS
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"

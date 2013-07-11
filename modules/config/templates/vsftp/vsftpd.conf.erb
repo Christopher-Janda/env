@@ -1,0 +1,27 @@
+# File managed by Puppet
+
+listen=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+virtual_use_local_privs=YES
+async_abor_enable=YES
+guest_enable=YES
+user_sub_token=$USER
+local_root=<%= scope.lookupvar('env::ftp_dir')%>/$USER
+chroot_local_user=YES
+hide_ids=YES
+pam_service_name=vsftpd.virtual
+ftpd_banner=Welcome to <%= scope.lookupvar('env::project_name')%>
+dirlist_enable=YES
+chown_uploads=YES
+chown_username=<%= scope.lookupvar('env::deploy_user')%>
+guest_username=<%= scope.lookupvar('env::deploy_user')%>
+nopriv_user=<%= scope.lookupvar('env::deploy_user')%>
+connect_from_port_20=YES
+pasv_enable=YES
+pasv_min_port=<%= scope.lookupvar('env::ftp_pasv_min_port')%>
+pasv_max_port=<%= scope.lookupvar('env::ftp_pasv_max_port')%>
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
