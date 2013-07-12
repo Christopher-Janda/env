@@ -5,10 +5,6 @@ class selenium{
         package { 'openjdk-7-jre-headless': ensure => present, }
     }
 
-    if defined(Package['curl']) == false {
-        package { 'curl': ensure  => present, }
-    }
-
     package{ "firefox":
         ensure  => present,
     }

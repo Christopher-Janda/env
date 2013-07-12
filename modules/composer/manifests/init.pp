@@ -13,12 +13,6 @@ class composer {
         require mysql_server
     }
 
-    if defined(Package['git']) == false {
-        package { 'git': ensure => present, }
-    }
-    if defined(Package['curl']) == false {
-        package { 'curl': ensure  => present, }
-    }
     if defined(Class['php']) == false {
         include php
     }

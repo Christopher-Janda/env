@@ -12,6 +12,12 @@ include config
 package { "vim":
     ensure      => installed,
 }
+package {
+    'curl': ensure  => present,
+}
+package {
+    'git': ensure => present,
+}
 include mysql::client
 exec { "apt-get update":
     command => "/usr/bin/apt-get update",
