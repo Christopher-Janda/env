@@ -24,6 +24,7 @@ class env (
     $disable_sendfile = hiera('disable_sendfile')
     $apache_index_rewrite = hiera('apache_index_rewrite')
     $mysql_bind_address = hiera('mysql_bind_address')
+    $selenium_listen_port = hiera('selenium_listen_port')
 
     ## DYNAMIC SETTINGS
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"
