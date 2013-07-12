@@ -18,6 +18,7 @@ exec { "apt-get update":
     refreshonly => true,
 }
 
+
 node default {
     hiera_include('classes')
 }
@@ -122,24 +123,61 @@ class mysql_server {
         template        => 'config/mysql/my.cnf.erb',
     }
 
-    ufw::allow {"allow-mysql-${env::mysql_listen_port}-from-all":
+    ufw::allow {"allow-mysql-3306-from-all":
         port        => $env::mysql_listen_port,
         ip          => 'any',
     }
 
 }
 
-class selenium_server {
+class composer {
 
-    include selenium
+    $flags = $::environment ? {
+        dev     => '--dev',
+        default => '',
+    }
 
-    ufw::allow {"allow-selenium-${env::selenium_listen_port}-from-all":
-        port        => $env::selenium_listen_port,
-        ip          => 'any',
+    if defined(Class['apache_server']) == true {
+        require apache_server
+    }
+
+    if defined(Class['mysql_server']) == true {
+        require mysql_server
+    }
+
+    if defined(Package['git']) == false {
+        package { 'git': ensure => present, }
+    }
+    if defined(Package['curl']) == false {
+        package { 'curl': ensure  => present, }
+    }
+    if defined(Class['php']) == false {
+        include php
+    }
+
+    exec{ "curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp; mv /tmp/composer.phar /usr/local/bin/composer":
+        creates     => '/usr/local/bin/composer',
+        require     => [ Package['curl'], Class['php'] ],
+        onlyif      => "test -f ${env::deploy_path}/composer.json",
+    }->
+    exec{ "composer install ${flags}":
+        cwd         => $env::deploy_path,
+        require     => Package['git'],
+        environment => "HOME=/home/${env::deploy_user}",
+        onlyif      => "test -f ${env::deploy_path}/composer.json",
+    }->
+    exec{ "composer update ${flags}":
+        cwd         => $env::deploy_path,
+        environment => "HOME=/home/${env::deploy_user}",
+        onlyif      => "test -f ${env::deploy_path}/composer.lock"
+    }
+
+    file_line { "Composer CLI autoload":
+        ensure  => present,
+        path    => '/etc/environment',
+        line    => "COMPOSER_AUTOLOAD=\"${env::composer_autoload}\"",
     }
 
 }
-
-
 
 

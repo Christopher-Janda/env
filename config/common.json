@@ -49,6 +49,12 @@
 
     "selenium_listen_port": "4444",
 
+    "ftp_listen_port": "21",
+    "ftp_pasv_min_port": "3000",
+    "ftp_pasv_max_port": "3100",
+    "ftp_dir": "/home/ftp",
+    "ftp_users": {},
+
     "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
     "php_modules": ["apc"],
 
