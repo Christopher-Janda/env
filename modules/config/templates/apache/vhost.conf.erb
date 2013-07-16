@@ -7,6 +7,7 @@ Listen <%= @port %>
     ServerAdmin <%= @server_admin_email %>
     DocumentRoot <%= @real_docroot %>
     SetEnv PHP_ENV <%= scope.lookupvar('::environment') %>
+    SetEnv DEPLOY_PATH <%= scope.lookupvar('env::deploy_path') %>
     SetEnv COMPOSER_AUTOLOAD <%= scope.lookupvar('env::composer_autoload') %>
 <% if scope.lookupvar('::environment') == 'dev' -%>
     php_flag display_errors on
