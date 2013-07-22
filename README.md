@@ -9,7 +9,7 @@ Env setup
             "project_name": "seed-project",
 
             "vagrant": {
-                "web": 
+                "web": {
                     "host": "www.local",
                     "ip": "192.168.33.1",
                     "ports": {
