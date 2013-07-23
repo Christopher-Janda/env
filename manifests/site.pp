@@ -120,6 +120,15 @@ class apache_server {
         notify  => Service['apache'],
     }
 
+    if "xdebug" in $env::php5_modules {
+        file { "/etc/php5/conf.d/xdebug_remote.ini":
+    		ensure      => present,
+    		content     => template('config/php/xdebug_remote.ini.erb'),
+    		notify      => Service["apache"],
+    		require     => Class["php::config"],
+    	}
+    }
+
 }
 
 class mysql_server {
