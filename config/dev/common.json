@@ -5,5 +5,7 @@
     "deploy_hash": "$1$/aENfaOp$Mbot3VfBSQwWFi4p2/SE90",
     "deploy_keys": [],
 
-    "php5_modules": ["xdebug"]
+    "php5_modules": ["xdebug"],
+
+    "xdebug_remote_connect_back": "1"
 }
