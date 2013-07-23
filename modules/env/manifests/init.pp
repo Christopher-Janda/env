@@ -31,6 +31,7 @@ class env (
     $ftp_users = hiera('ftp_users')
     $xdebug_remote_connect_back = hiera('xdebug_remote_connect_back')
     $xdebug_remote_autostart = hiera('xdebug_remote_autostart')
+    $xdebug_remote_port = hiera('xdebug_remote_port')
     $selenium_listen_port = hiera('selenium_listen_port')
 
     ## DYNAMIC SETTINGS

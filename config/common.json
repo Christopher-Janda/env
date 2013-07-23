@@ -57,6 +57,7 @@
 
     "xdebug_remote_connect_back": "0",
     "xdebug_remote_autostart": "0",
+    "xdebug_remote_port": "9000",
 
     "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
     "php_modules": ["apc"],
