@@ -1,5 +1,5 @@
 [xdebug]
 xdebug.remote_enable=1
-xdebug.remote_connect_back=1
-xdebug.remote_autostart=0
+xdebug.remote_connect_back=<%= scope.lookupvar('env::xdebug_remote_connect_back')%>
+xdebug.remote_autostart=<%= scope.lookupvar('env::xdebug_remote_autostart')%>
 xdebug.idekey=PHPSTORM

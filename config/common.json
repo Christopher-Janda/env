@@ -55,6 +55,9 @@
     "ftp_dir": "/home/ftp",
     "ftp_users": {},
 
+    "xdebug_remote_connect_back": "0",
+    "xdebug_remote_autostart": "0",
+
     "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
     "php_modules": ["apc"],
 

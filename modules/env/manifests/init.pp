@@ -29,6 +29,8 @@ class env (
     $ftp_pasv_max_port = hiera('ftp_pasv_max_port')
     $ftp_dir = hiera('ftp_dir')
     $ftp_users = hiera('ftp_users')
+    $xdebug_remote_connect_back = hiera('xdebug_remote_connect_back')
+    $xdebug_remote_autostart = hiera('xdebug_remote_autostart')
     $selenium_listen_port = hiera('selenium_listen_port')
 
     ## DYNAMIC SETTINGS
