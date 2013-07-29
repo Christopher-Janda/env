@@ -32,6 +32,8 @@ class env (
     $xdebug_remote_connect_back = hiera('xdebug_remote_connect_back')
     $xdebug_remote_autostart = hiera('xdebug_remote_autostart')
     $xdebug_remote_port = hiera('xdebug_remote_port')
+    $xdebug_profiler_enable_trigger = hiera('xdebug_profiler_enable_trigger')
+    $xdebug_profiler_output_name = hiera('xdebug_profiler_output_name')
     $selenium_listen_port = hiera('selenium_listen_port')
 
     ## DYNAMIC SETTINGS
@@ -44,6 +46,8 @@ class env (
     }
     $scripts_dir = "${deploy_path}/env/scripts"
     $composer_autoload = "${deploy_path}/vendor/autoload.php"
+
+    $xdebug_profiler_output_dir = "${deploy_path}/tmp"
 
     if defined( "file_line" ) {
         file_line{ 'PHP CLI environment"':

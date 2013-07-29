@@ -58,6 +58,10 @@
     "xdebug_remote_connect_back": "0",
     "xdebug_remote_autostart": "0",
     "xdebug_remote_port": "9000",
+    "xdebug_profiler_enable_trigger": "0",
+    "xdebug_profiler_output_name": "cachegrind.out.%t-%s",
+    "xdebug_profiler_output_dir": "/tmp",
+
 
     "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
     "php_modules": ["apc"],

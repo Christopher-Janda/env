@@ -7,5 +7,6 @@
 
     "php5_modules": ["xdebug"],
 
-    "xdebug_remote_connect_back": "1"
+    "xdebug_remote_connect_back": "1",
+    "xdebug_profiler_enable_trigger": "1"
 }
