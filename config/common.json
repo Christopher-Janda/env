@@ -66,6 +66,8 @@
     "php5_modules": ["curl", "gd", "mcrypt", "mysql", "imap"],
     "php_modules": ["apc"],
 
-    "robots_disallow": []
+    "robots_disallow": [],
+    "robots_allow": [],
 
+    "sitemap":""
 }

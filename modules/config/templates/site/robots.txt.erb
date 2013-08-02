@@ -1,3 +1,7 @@
+<% if @sitemap != "" -%>
+Sitemap: <%= @sitemap %>
+
+<% end -%>
 User-agent: *
 <% if @robots_disallow.any? -%>
 <% @robots_disallow.each do |disallow| -%>
@@ -5,4 +9,11 @@ Disallow: <%= disallow %>
 <% end -%>
 <% else -%>
 Disallow:
+<% end -%>
+<% if @robots_allow.any? -%>
+<% @robots_allow.each do |allow| -%>
+Allow: <%= allow %>
+<% end -%>
+<% else -%>
+Allow:
 <% end -%>
