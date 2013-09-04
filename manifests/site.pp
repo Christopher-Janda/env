@@ -101,6 +101,10 @@ class apache_server {
         require => Package["apache"],
     }
 
+    apache::module { $env::apache_modules:
+        notify => Service["apache"],
+    }
+
     php::module { $env::php5_modules:
         notify  => Service["apache"],
     }

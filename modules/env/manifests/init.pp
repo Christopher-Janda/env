@@ -17,6 +17,7 @@ class env (
     $ssh_password_authentication = hiera('ssh_password_authentication')
     $apache_listen_port = hiera('apache_listen_port')
     $apache_servername = hiera('apache_servername')
+    $apache_modules = hiera_array('apache_modules')
     $php_modules = hiera_array('php_modules')
     $php5_modules = hiera_array('php5_modules')
     $mysql_root_password = hiera('mysql_root_password')

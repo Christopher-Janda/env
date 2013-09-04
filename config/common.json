@@ -42,6 +42,7 @@
     "apache_MaxSpareServers": "10",
     "apache_MaxClients": "150",
     "apache_MaxRequestsPerChild": "0",
+    "apache_modules": [],
 
     "mysql_root_password": "pass123",
     "mysql_listen_port": "3306",
