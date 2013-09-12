@@ -17,6 +17,11 @@ Listen <%= @port %>
 <% if scope.lookupvar('env::disable_sendfile') == 'true' -%>
     EnableSendfile off
 <% end -%>
+<% if scope.lookupvar('env::apache_aliases').is_a? Hash -%>
+    <% scope.lookupvar('env::apache_aliases').each_pair do |key, value| -%>
+    Alias <%= key %> <%= scope.lookupvar('env::deploy_path') %><%= value %>
+    <% end %>
+<% end -%>
     <Directory <%= @real_docroot %>>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
