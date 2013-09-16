@@ -184,12 +184,15 @@ class composer {
         require     => Package['git'],
         environment => "HOME=/home/${env::deploy_user}",
         onlyif      => "test -f ${env::deploy_path}/composer.json",
-    }->
+    }
+    /*
+    ->
     exec{ "composer update ${flags}":
         cwd         => $env::deploy_path,
         environment => "HOME=/home/${env::deploy_user}",
         onlyif      => "test -f ${env::deploy_path}/composer.lock"
     }
+    */
 
     file_line { "Composer CLI autoload":
         ensure  => present,
