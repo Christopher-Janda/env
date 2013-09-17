@@ -72,8 +72,6 @@ class nginx_server (
 
 class apache_server {
 
-    include composer
-
     class { "apache":
         # port        => $env::apache_listen_port,
         template    => 'config/apache/apache.conf.erb',
@@ -200,6 +198,41 @@ class composer {
         line    => "COMPOSER_AUTOLOAD=\"${env::composer_autoload}\"",
     }
 
+}
+
+class grunt {
+
+    file { '/etc/apt/sources.list.d':
+        ensure      => directory,
+    }->
+    apt::ppa { 'ppa:chris-lea/node.js':
+    }->
+    class{"nodejs":
+        version     => "0.10.18-1chl1~precise1"
+    }->
+    package { "grunt-cli":
+        ensure      => present,
+        provider    => 'npm',
+    }
+
+}
+
+define grunt::task {
+    require grunt
+
+    exec{ "npm install":
+        cwd     => $env::deploy_path,
+        onlyif  => "test -f ${env::deploy_path}/package.json",
+    }->
+    exec{ "grunt $name":
+        cwd     => $env::deploy_path,
+        onlyif  => "test -f ${env::deploy_path}/Gruntfile.js",
+    }
+}
+
+class grunt_deploy {
+    grunt::task{ "deploy":
+    }
 }
 
 
