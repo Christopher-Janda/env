@@ -1,27 +1,29 @@
-:backends:
+--- 
+? !ruby/symbol backends
+: 
   - json
-
-:logging:
-  console
-
-:hierarchy:
-  - ../../config/%{::environment}/%{::fqdn}
-  - ../../config/%{::environment}/%{::hostname}
-  - ../../config/%{::fqdn}
-  - ../../config/%{::hostname}
-  - %{::environment}/%{::fqdn}
-  - %{::environment}/%{::hostname}
-  - %{::fqdn}
-  - %{::hostname}
-  - ../../config/%{::environment}/%{::role}
-  - %{::environment}/%{::role}
-  - ../../config/%{::environment}/common
-  - %{::environment}/common
-  - ../../config/%{::role}
-  - %{::role}
+? !ruby/symbol hierarchy
+: 
+  - "../../config/%{::environment}/%{::fqdn}"
+  - "../../config/%{::environment}/%{::hostname}"
+  - "../../config/%{::fqdn}"
+  - "../../config/%{::hostname}"
+  - "%{::environment}/%{::fqdn}"
+  - "%{::environment}/%{::hostname}"
+  - "%{::fqdn}"
+  - "%{::hostname}"
+  - "../../config/%{::environment}/%{::role}"
+  - "%{::environment}/%{::role}"
+  - "../../config/%{::environment}/common"
+  - "%{::environment}/common"
+  - "../../config/%{::role}"
+  - "%{::role}"
   - ../../config/common
   - common
   - ../../config/project
-
-:json:
-  :datadir: "env/config"
+? !ruby/symbol json
+: 
+  ? !ruby/symbol datadir
+  : env/config
+? !ruby/symbol logging
+: console
