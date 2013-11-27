@@ -39,6 +39,7 @@ class env (
     $selenium_listen_port = hiera('selenium_listen_port')
 
     ## DYNAMIC SETTINGS
+    $base_path = "/home/${deploy_user}/${project_name}"
     $deploy_path = "/home/${deploy_user}/${project_name}/${::environment}"
     $deploy_script = "/home/${deploy_user}/${project_name}/deploy_${::environment}.sh"
     if $custom_webroot == '' {
